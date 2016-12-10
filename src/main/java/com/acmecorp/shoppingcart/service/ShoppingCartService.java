@@ -5,9 +5,6 @@ import com.acmecorp.shoppingcart.model.Item;
 import java.util.*;
 import java.text.DecimalFormat;
 
-import static com.acmecorp.shoppingcart.model.Item.Apple;
-import static com.acmecorp.shoppingcart.model.Item.Orange;
-
 
 /**
  * Created by abhishekdesai on 10/12/2016.
@@ -16,6 +13,13 @@ public class ShoppingCartService {
 
     private static final DecimalFormat FORMATTER = new DecimalFormat("'£'0.00");
 
+    /**
+     * Calculate total cost of supplied item.
+     * Assumption has been made that the list of enum Items will be provided by the invoker.
+     *
+     * @param items list of items
+     * @return total cost
+     */
     public String getTotalCost(List<Item> items) {
 
         double totalPrice = 0;

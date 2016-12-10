@@ -41,26 +41,44 @@ public class ShoppingCartServiceTest {
     }
 
     @Test
+    public void testGetTotalCostWithTwoApple() throws Exception {
+        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Apple, Apple));
+        assertEquals("£0.60", totalCost);
+    }
+
+    @Test
+    public void testGetTotalCostWithApples() throws Exception {
+        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Apple, Apple, Apple));
+        assertEquals("£1.20", totalCost);
+    }
+
+    @Test
     public void testGetTotalCostWithAnOrange() throws Exception {
         String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Orange));
         assertEquals("£0.25", totalCost);
     }
 
     @Test
-    public void testGetTotalCostWithAnApples() throws Exception {
-        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Apple, Apple, Apple));
-        assertEquals("£1.80", totalCost);
+    public void testGetTotalCostWithTwoOranges() throws Exception {
+        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Orange, Orange));
+        assertEquals("£0.50", totalCost);
     }
 
     @Test
-    public void testGetTotalCostWithAnOranges() throws Exception {
+    public void testGetTotalCostWithThreeOranges() throws Exception {
         String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Orange, Orange, Orange));
+        assertEquals("£0.50", totalCost);
+    }
+
+    @Test
+    public void testGetTotalCostWithOranges() throws Exception {
+        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Orange, Orange, Orange, Orange));
         assertEquals("£0.75", totalCost);
     }
 
     @Test
     public void testGetTotalCostWithApplesAndOranges() throws Exception {
-        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Apple, Orange, Apple, Orange, Apple, Orange));
-        assertEquals("£2.55", totalCost);
+        String totalCost = shoppingCartService.getTotalCost(Arrays.asList(Apple, Orange, Apple, Orange, Apple, Orange, Orange));
+        assertEquals("£1.95", totalCost);
     }
 }
